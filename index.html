@@ -1,22 +1,174 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Project 1</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
 </head>
+
+
 <body>
-    <h1>Project 1</h1>
+    <div class="mediaQ">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <p class="p1">KTCZ's Music Event Finder</a>
+                    </p>
+                </div>
+                <form class="navbar-form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="input1" placeholder="Enter City Here" name="search">
+                    </div>
+                    <button type="submit" class="btn btn-default" id="submitButton">Submit</button>
+                </form>
+                <!-- 
+            <form> onsubmit="go_get(); return false;">
+                    <input type="text" id="yourtextfield" />
+                    <input type="submit" value="Search Playlists" />
+                </form> -->
+            </div>
+        </nav>
+        <div id="container33" class="jojo container-fluid">
+            <div class="row table-row event1">
+                <div class="col-lg event1 eventCol">
+                </div>
+                <div class="col-lg event1 videoCol">
+                </div>
+            </div>
+            <div class="row table-row event2">
+                <div class="col-lg event2 eventCol">
+                </div>
+                <div class="col-lg event2 videoCol">
+                </div>
+            </div>
+            <div class="row table-row event3">
+                <div class="col-lg event3 eventCol">
+                </div>
+                <div class="col-lg event3 videoCol">
+                </div>
+            </div>
+            <div class="row table-row event4">
+                <div class="col-lg event4 eventCol">
+                </div>
+                <div class="col-lg event4 videoCol">
+                </div>
+            </div>
+            <div class="row table-row event5">
+                    <div class="col-lg event5 eventCol">
+                    </div>
+                    <div class="col-lg event5 videoCol">
+                    </div>
+            </div>
+        </div>
+        <!-- <iframe width="420" height="315"src="https://www.youtube.com/embed/tgbNymZ7vqY">
+</iframe> -->
+        <!-- <iframe id="player" type="text/html" width="640" height="390" src="https://www.youtube.com/watch?v=zQkDSo0mA0Y" frameborder="0"></iframe> -->
+    </div>
+    </div>
+    <!-- //////////////////////////BEGIN SCRIPT\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  -->
 
-    <p>I see you wanna bee a sea lion smiling in the sunset.
-    </p>
 
 
-    <!-- CRAIGS  CHANGE -->
-    <img src="https://r.hswstatic.com/w_907/gif/now-TwuUAjsF-coins_chuckcross_eyeem_gettyimagesjpg-1210-680.jpg">
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        var eventCounter = 1;
+        var videoCounter = 1;
+        //YOUTUBE PLAYER
+        var player;
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '390',
+                width: '640',
+                videoId: 'M7lc1UVf-VE',
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+        $("#submitButton").on("click", function (e) {
+            e.preventDefault();
+            // $('.row').css("border", "2px solid black");
+            let city = $("#input1").val();
+            console.log(city);
+            $('#eventCol').empty();
+            $('#videoCol').empty();
+            $('.videos').empty();
+            $.ajax({
+                    type: "GET",
+                    url: "https://app.ticketmaster.com/discovery/v2/events.json?apikey=pBf0vPvFVvEYxX2QED6w3nO42LNdzL92&size=5&city=" +
+                        city,
+                    async: true,
+                    dataType: "json",
+
+                    //ADD YOUTUBE HERE
+                })
+                .then(function (json) {
+                    json._embedded.events.forEach(function (dataEvent) {
+                        console.log(dataEvent.name);
+                        $(`.event${eventCounter} .eventCol`).append(`Musical Artist: ${dataEvent.name}<br>
+                                                                    <a href='${dataEvent.url}'> Buy Tickets Now! </a><br>
+                                                                    <img style="width:300px" src='${dataEvent.images[0].url}'> `);
+                        eventCounter++;
+                        console.log(eventCounter);
+
+                        return $.ajax({
+                                type: "GET",
+                                url: "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&key=AIzaSyB6IswVE48qLuJOLNaEPIulzEchVcmO8NY&q=" +
+                                    dataEvent.name,
+                                async: false,
+                                dataType: "json"
+                            })
+                            .then(function (youtubeData) {
+                                console.log("YOUTUBE DATA" + youtubeData.items[0].id.videoId);
+                                $(`.event${videoCounter} .videoCol`).append(`<iframe id="player" type="text/html" width="450" height="250"
+                                                                             src="https://www.youtube.com/embed/${youtubeData.items[0].id.videoId}"
+                                                                             frameborder="0"></iframe>`);
+                                videoCounter++;
+                                console.log('videoCounter' + videoCounter);
+                                // )
+                                // $('.videos').append(
+                                //     `<div><iframe id="player" type="text/html" width="640" height="390"
+                                //     src="https://www.youtube.com/embed/${youtubeData.items[0].id.videoId}"
+                                //     frameborder="0"></iframe></div>`
+                                // );
+                                // $("#containter33").append(`<iframe width="420" height="315"
+                                //                             src="https://www.youtube.com/embed/${youtubeData.items[0].id.videoId}">
+                                //                           </iframe>`);
+
+                            })
+
+                        // .then,
+                        //error: function (xhr, status, err) {
+                    });
+                });
+        });
+    </script>
+</body>
+
+</html>
+
 
 </body>
 </html>
+

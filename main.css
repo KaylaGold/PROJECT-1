@@ -1,0 +1,121 @@
+@media (max-width: 575.98px) {
+    .mediaQ {
+        flex-direction: column;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .mediaQ {
+        flex-direction: column;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .mediaQ {
+        flex-direction: column;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .mediaQ {
+        flex-direction: column;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+
+@media (min-width: 1200px) {
+    .mediaQ {
+        flex-direction: column;
+    }
+}
+
+    .navbar {
+        display: flex;
+        background-color: black;
+        font-size: 26px;
+        font-family: monospace;
+    }
+
+    .container {
+        flex: 1;
+    }
+
+    #submitButton {
+        position: relative;
+        left: -60px;
+        top: -28.5px;
+    }
+
+    #input1 {
+        position: relative;
+        left: 60px;
+        top: 29px;
+        font-size: 16px;
+    }
+
+    .navbar-brand {
+        color: rgb(48, 99, 129);
+        font-size: 26px;
+    }
+
+    .p1 {
+        text-shadow: 15px 20px #24113d;
+        position: relative;
+        top: -20px;
+    }
+
+    #container33 {
+        display: flex;
+        height: auto;
+    }
+
+    .jojo {
+        flex: 1;
+        flex-direction: column;
+        text-align: center;
+        align-content: center;
+        align-items: center;
+        background-image: url(https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/265400/88808ba6c63dd5ce2b6ed1d2a9089534c4f4b503.jpg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        /* background-position: center;  */
+        background-size: cover;
+        
+    }
+
+    img {
+        width: 300px;
+        align-items: center;
+    }
+
+    .row {
+        padding: 10px 5px 10px 10px;
+        background-color: rgba(206, 203, 203, 0.4);
+        margin: 10px;
+        /* border: 2px solid black; */
+        /* display: none; */
+        display: flex !important;
+        flex-direction: row !important;
+
+        /* box-shadow: 7px 2px 2px 2px darkgray; */
+
+    }
+
+    .videoCol, .eventCol {
+        margin: 4px;
+        
+    }
+
+    .eventCol {
+        /* border: 3px solid rgba(10, 10, 10, 0.8); */
+        background-color: whitesmoke;
+        box-shadow: 7px 2px 2px 2px darkgray;
+        margin: 0px 35px 0px 0px;
+    }
