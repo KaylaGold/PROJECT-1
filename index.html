@@ -1,6 +1,5 @@
 <!-- <!DOCTYPE html> -->
 <html>
-
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,12 +19,10 @@
     <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
 </head>
-
-
 <body>
     <div class="mediaQ">
         <nav class="navbar">
-            <div class="container">
+            <div class="container recent">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">
                         <p class="p1">KTCZ's Music Event Finder</a>
@@ -37,13 +34,11 @@
                     </div>
                     <button type="submit" class="btn btn-default" id="submitButton">Submit</button>
                 </form>
-                <!-- 
-            <form> onsubmit="go_get(); return false;">
-                    <input type="text" id="yourtextfield" />
-                    <input type="submit" value="Search Playlists" />
-                </form> -->
+                
             </div>
+            
         </nav>
+        <div class="recentSearches"></div>
         <div id="container33" class="jojo container-fluid">
             <div class="row table-row event1">
                 <div class="col-lg event1 eventCol">
@@ -82,18 +77,27 @@
     </div>
     </div>
     <!-- //////////////////////////BEGIN SCRIPT\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  -->
-
-
-
-
-
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
+    
+ // Initialize Firebase
+ var config = {
+   apiKey: "AIzaSyDB1HESx32pUTyRAaggDtlr8BOiDku1bDc",
+   authDomain: "musiceventfinder.firebaseapp.com",
+   databaseURL: "https://musiceventfinder.firebaseio.com",
+   projectId: "musiceventfinder",
+   storageBucket: "",
+   messagingSenderId: "473064523225"
+ };
+ firebase.initializeApp(config);
+ var database = firebase.database();
         var eventCounter = 1;
+        let btnArray = [];
         var videoCounter = 1;
+        let btnCounter = 0;
         //YOUTUBE PLAYER
         var player;
-
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
                 height: '390',
@@ -110,27 +114,48 @@
             // $('.row').css("border", "2px solid black");
             let city = $("#input1").val();
             console.log(city);
-            $('#eventCol').empty();
-            $('#videoCol').empty();
-            $('.videos').empty();
+            findCity(city)
+            
+                
+        });
+        database.ref().on("child_added", function(snapshot) {
+                    let value = snapshot.val();
+                    if (btnArray.includes(value.city)) {
+                        console.log("fuck");
+                    } else if (btnCounter < 7) 
+                    {
+                        btnArray.push(value.city);
+                    $(".recentSearches").append(`<button class ="city-btn" value = "${value.city}">${value.city}</button>`)
+                    btnCounter++
+                    };
+                        
+                    
+                });
+$(document).on("click", ".city-btn", function (e){
+let city = $(this).val();
+e.preventDefault();
+findCity(city);
+})
+function findCity(city){
+    eventCounter = 1;
+            videoCounter = 1;
+            
             $.ajax({
                     type: "GET",
                     url: "https://app.ticketmaster.com/discovery/v2/events.json?apikey=pBf0vPvFVvEYxX2QED6w3nO42LNdzL92&size=5&city=" +
                         city,
                     async: true,
                     dataType: "json",
-
                     //ADD YOUTUBE HERE
                 })
                 .then(function (json) {
                     json._embedded.events.forEach(function (dataEvent) {
                         console.log(dataEvent.name);
-                        $(`.event${eventCounter} .eventCol`).append(`Musical Artist: ${dataEvent.name}<br>
+                        $(`.event${eventCounter} .eventCol`).html(`Musical Artist: ${dataEvent.name}<br>
                                                                     <a href='${dataEvent.url}'> Buy Tickets Now! </a><br>
                                                                     <img style="width:300px" src='${dataEvent.images[0].url}'> `);
                         eventCounter++;
                         console.log(eventCounter);
-
                         return $.ajax({
                                 type: "GET",
                                 url: "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&key=AIzaSyB6IswVE48qLuJOLNaEPIulzEchVcmO8NY&q=" +
@@ -140,29 +165,23 @@
                             })
                             .then(function (youtubeData) {
                                 console.log("YOUTUBE DATA" + youtubeData.items[0].id.videoId);
-                                $(`.event${videoCounter} .videoCol`).append(`<iframe id="player" type="text/html" width="450" height="250"
+                                $(`.event${videoCounter} .videoCol`).html(`<iframe id="player" type="text/html" width="450" height="250"
                                                                              src="https://www.youtube.com/embed/${youtubeData.items[0].id.videoId}"
                                                                              frameborder="0"></iframe>`);
                                 videoCounter++;
                                 console.log('videoCounter' + videoCounter);
-                                // )
-                                // $('.videos').append(
-                                //     `<div><iframe id="player" type="text/html" width="640" height="390"
-                                //     src="https://www.youtube.com/embed/${youtubeData.items[0].id.videoId}"
-                                //     frameborder="0"></iframe></div>`
-                                // );
-                                // $("#containter33").append(`<iframe width="420" height="315"
-                                //                             src="https://www.youtube.com/embed/${youtubeData.items[0].id.videoId}">
-                                //                           </iframe>`);
-
+                               
                             })
-
-                        // .then,
-                        //error: function (xhr, status, err) {
+                      
                     });
                 });
-        });
+                database.ref().push({
+                    city: city
+                })
+                //ADD SEARCH TO DATABASE
+}
     </script>
 </body>
-
+</html>
+</body>
 </html>
