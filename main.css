@@ -3,114 +3,156 @@
         flex-direction: column;
     }
 }
+
 /* Small devices (landscape phones, 576px and up) */
+
 @media (min-width: 576px) and (max-width: 767.98px) {
     .mediaQ {
         flex-direction: column;
     }
 }
+
 /* Medium devices (tablets, 768px and up) */
+
 @media (min-width: 768px) and (max-width: 991.98px) {
     .mediaQ {
         flex-direction: column;
     }
 }
+
 /* Large devices (desktops, 992px and up) */
+
 @media (min-width: 992px) and (max-width: 1199.98px) {
     .mediaQ {
         flex-direction: column;
     }
 }
+
 /* Extra large devices (large desktops, 1200px and up) */
+
 @media (min-width: 1200px) {
     .mediaQ {
         flex-direction: column;
     }
 }
-    .recent {
-        
-        display: flex;
-        flex-direction: row;
-        
+
+.navbar {
+    display: flex;
+    background-color: black;
+    font-size: 26px;
+    font-family: “Righteous”, cursive;
+    -webkit-animation: neon2 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon2 1.5s ease-in-out infinite alternate;
+    animation: neon2 1.5s ease-in-out infinite alternate;
+}
+
+.container {
+    flex: 1;
+    height: 40px;
+    margin: auto;
+}
+
+#submitButton {
+    position: relative;
+    left: -60px;
+    top: -10px;
+}
+
+#input1 {
+    position: relative;
+    left: 60px;
+    top: 43px;
+    font-size: 16px;
+    font-family: “georgia”;
+}
+
+.navbar-brand {
+    font-size: 30px;
+}
+
+.p1 {
+    position: relative;
+    top: 5px;
+    text-decoration: none;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+    font-size: 1.5em;
+    font-family: “Righteous”, cursive;
+    -webkit-animation: neon2 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon2 1.5s ease-in-out infinite alternate;
+    animation: neon2 1.5s ease-in-out infinite alternate;
+}
+
+#container33 {
+    display: flex;
+    height: auto;
+}
+
+.jojo {
+    flex: 1;
+    flex-direction: column;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    background-image: url(https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/265400/88808ba6c63dd5ce2b6ed1d2a9089534c4f4b503.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* background-position: center;  */
+    background-size: cover;
+}
+
+.recent {
+    display: flex;
+    flex-direction: row;
+}
+
+.recentSearches {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.city-btn {
+    flex: 1;
+    max-width: 100px;
+    background-color: rgba(206, 203, 203, 0.0);
+    border-color: rgba(206, 203, 203, 0.0)
+}
+
+img {
+    width: 300px;
+    align-items: center;
+}
+
+.row {
+    padding: 10px 5px 10px 10px;
+    background-color: rgba(206, 203, 203, 0.4);
+    margin: 10px;
+    /* border: 2px solid black; */
+    /* display: none; */
+    display: flex !important;
+    flex-direction: row !important;
+    /* box-shadow: 7px 2px 2px 2px darkgray; */
+}
+
+.videoCol,
+.eventCol {
+    margin: 4px;
+}
+
+.eventCol {
+    /* border: 3px solid rgba(10, 10, 10, 0.8); */
+    background-color: whitesmoke;
+    box-shadow: 7px 2px 2px 2px darkgray;
+    margin: 0px 35px 0px 0px;
+}
+
+@-webkit-keyframes neon2 {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228dff, 0 0 70px #228dff, 0 0 80px #228dff, 0 0 100px #228dff, 0 0 150px #228dff;
     }
-    .recentSearches { 
-        flex: 1;
-        display: flex;
-        justify-content: center;
+    to {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228dff, 0 0 35px #228dff, 0 0 40px #228dff, 0 0 50px #228dff, 0 0 75px #228dff;
     }
-    .city-btn {
-        flex: 1;
-        max-width: 100px;
-        background-color: rgba(206, 203, 203, 0.0);
-        border-color: rgba(206, 203, 203, 0.0)
-    }
-    .navbar {
-        display: flex;
-        background-color: black;
-        font-size: 26px;
-        font-family: monospace;
-    }
-    .container {
-        flex: 1;
-    }
-    #submitButton {
-        position: relative;
-        left: -60px;
-        top: -28.5px;
-    }
-    #input1 {
-        position: relative;
-        left: 60px;
-        top: 29px;
-        font-size: 16px;
-    }
-    .navbar-brand {
-        color: rgb(48, 99, 129);
-        font-size: 26px;
-    }
-    .p1 {
-        text-shadow: 15px 20px #24113d;
-        position: relative;
-        top: -20px;
-    }
-    #container33 {
-        display: flex;
-        height: auto;
-    }
-    .jojo {
-        flex: 1;
-        flex-direction: column;
-        text-align: center;
-        align-content: center;
-        align-items: center;
-        background-image: url(https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/265400/88808ba6c63dd5ce2b6ed1d2a9089534c4f4b503.jpg);
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        /* background-position: center;  */
-        background-size: cover;
-        
-    }
-    img {
-        width: 300px;
-        align-items: center;
-    }
-    .row {
-        padding: 10px 5px 10px 10px;
-        background-color: rgba(206, 203, 203, 0.4);
-        margin: 10px;
-        /* border: 2px solid black; */
-        /* display: none; */
-        display: flex !important;
-        flex-direction: row !important;
-        /* box-shadow: 7px 2px 2px 2px darkgray; */
-    }
-    .videoCol, .eventCol {
-        margin: 4px;
-        
-    }
-    .eventCol {
-        /* border: 3px solid rgba(10, 10, 10, 0.8); */
-        background-color: whitesmoke;
-        box-shadow: 7px 2px 2px 2px darkgray;
-        margin: 0px 35px 0px 0px;
-    }
+}
