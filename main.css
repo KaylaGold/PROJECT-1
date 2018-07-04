@@ -131,9 +131,13 @@
 
 #container33 {
     display: flex;
+<<<<<<< HEAD
     height: 100%;
     width:100%; 
     
+=======
+    height: auto;
+>>>>>>> master
 }
 
 .jojo {
@@ -147,8 +151,11 @@
     background-attachment: fixed;
     /* background-position: center;  */
     background-size: cover;
+<<<<<<< HEAD
     height:100%;
     width: 100%; 
+=======
+>>>>>>> master
 }
 
 .recent {
@@ -184,12 +191,21 @@ img {
     flex-direction: row !important;
     /* box-shadow: 7px 2px 2px 2px darkgray; */
 }
+<<<<<<< HEAD
 
 .videoCol,
 .eventCol {
     margin: 4px;
 }
 
+=======
+
+.videoCol,
+.eventCol {
+    margin: 4px;
+}
+
+>>>>>>> master
 .eventCol {
     /* border: 3px solid rgba(10, 10, 10, 0.8); */
     background-color: whitesmoke;
