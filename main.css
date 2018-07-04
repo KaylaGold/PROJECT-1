@@ -131,7 +131,9 @@
 
 #container33 {
     display: flex;
-    height: auto;
+    height: 100%;
+    width:100%; 
+    
 }
 
 .jojo {
@@ -145,6 +147,8 @@
     background-attachment: fixed;
     /* background-position: center;  */
     background-size: cover;
+    height:100%;
+    width: 100%; 
 }
 
 .recent {
