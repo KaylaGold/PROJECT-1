@@ -20,12 +20,12 @@
     <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
 </head>
 <body>
-
+    <div class="mediaQ">
         <nav class="navbar">
             <div class="container recent">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">
-                        <p class="p1">KTCZ's Music Event Finder</a>
+                        <p class="p1">KTCZ's Local Event Finder</a>
                     </p>
                 </div>
                 <form class="navbar-form">
@@ -70,7 +70,7 @@
                     <div class="col-lg event5 videoCol">
                     </div>
             </div>
-       
+        </div>
         <!-- <iframe width="420" height="315"src="https://www.youtube.com/embed/tgbNymZ7vqY">
 </iframe> -->
         <!-- <iframe id="player" type="text/html" width="640" height="390" src="https://www.youtube.com/watch?v=zQkDSo0mA0Y" frameborder="0"></iframe> -->
@@ -111,6 +111,7 @@
         }
         $("#submitButton").on("click", function (e) {
             e.preventDefault();
+            $(".table-row").css('opacity', '1');
             // $('.row').css("border", "2px solid black");
             let city = $("#input1").val();
             console.log(city);
@@ -134,6 +135,7 @@
 $(document).on("click", ".city-btn", function (e){
 let city = $(this).val();
 e.preventDefault();
+$(".table-row").css('opacity', '1');
 findCity(city);
 })
 function findCity(city){
@@ -151,7 +153,7 @@ function findCity(city){
                 .then(function (json) {
                     json._embedded.events.forEach(function (dataEvent) {
                         console.log(dataEvent.name);
-                        $(`.event${eventCounter} .eventCol`).html(`Musical Artist: ${dataEvent.name}<br>
+                        $(`.event${eventCounter} .eventCol`).html(`Event: ${dataEvent.name}<br>
                                                                     <a href='${dataEvent.url}'> Buy Tickets Now! </a><br>
                                                                     <img style="width:300px" src='${dataEvent.images[0].url}'> `);
                         eventCounter++;
@@ -184,8 +186,4 @@ function findCity(city){
 </body>
 </html>
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> master

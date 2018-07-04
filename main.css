@@ -1,5 +1,6 @@
 /* Extra small devices (phones, 600px and down) */
 
+
 @media (max-width: 600px) {
     .mediaQ {
         flex-direction: column;
@@ -89,6 +90,7 @@
     -webkit-animation: neon2 1.5s ease-in-out infinite alternate;
     -moz-animation: neon2 1.5s ease-in-out infinite alternate;
     animation: neon2 1.5s ease-in-out infinite alternate;
+    min-height: 80px;
 }
 
 .container {
@@ -131,13 +133,7 @@
 
 #container33 {
     display: flex;
-<<<<<<< HEAD
-    height: 100%;
-    width:100%; 
     
-=======
-    height: auto;
->>>>>>> master
 }
 
 .jojo {
@@ -151,11 +147,9 @@
     background-attachment: fixed;
     /* background-position: center;  */
     background-size: cover;
-<<<<<<< HEAD
-    height:100%;
-    width: 100%; 
-=======
->>>>>>> master
+    background-position: fixed;
+    
+  
 }
 
 .recent {
@@ -167,18 +161,23 @@
     flex: 1;
     display: flex;
     justify-content: center;
+    min-height:40px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
 }
 
 .city-btn {
     flex: 1;
     max-width: 100px;
-    background-color: rgba(206, 203, 203, 0.0);
-    border-color: rgba(206, 203, 203, 0.0)
+    background-color: rgba(206, 203, 203, 0.0 );
+    border-color: rgba(0, 2, 109, 0.726)
 }
 
 img {
     width: 300px;
     align-items: center;
+    background-repeat: repeat-y;
+    height: 200px;
+
 }
 
 .row {
@@ -191,21 +190,20 @@ img {
     flex-direction: row !important;
     /* box-shadow: 7px 2px 2px 2px darkgray; */
 }
-<<<<<<< HEAD
 
 .videoCol,
 .eventCol {
     margin: 4px;
+    min-height: 240px;
+    justify-content: center;
+    align-items: center;
 }
-
-=======
-
-.videoCol,
-.eventCol {
-    margin: 4px;
+.table-row{
+    opacity:0;
+    min-height: 280px;  
+    min-width: 80%;
+    max-width: 80%;
 }
-
->>>>>>> master
 .eventCol {
     /* border: 3px solid rgba(10, 10, 10, 0.8); */
     background-color: whitesmoke;
